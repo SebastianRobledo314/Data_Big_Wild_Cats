@@ -1,0 +1,298 @@
+{
+  "dataset_metadata": {
+    "last_updated": "2026-02-16",
+    "total_species_covered": 11,
+    "primary_source": "IUCN Red List, Panthera.org, and World Population Review 2026"
+  },
+  "species_list": [
+    {
+      "common_name": "Tiger",
+      "scientific_name": "Panthera tigris",
+      "conservation_status": "Endangered",
+      "geographical_data": {
+        "regions": [
+          "Asia"
+        ],
+        "range_countries": [
+          "India",
+          "Russia",
+          "Indonesia",
+          "Nepal",
+          "Thailand",
+          "Malaysia",
+          "Bangladesh",
+          "Bhutan",
+          "China",
+          "Myanmar"
+        ],
+        "strongholds": [
+          "India (70% of wild population)",
+          "Russian Far East"
+        ]
+      },
+      "habitat_types": [
+        "Tropical rainforests",
+        "Snowy birch forests",
+        "Mangrove swamps"
+      ]
+    },
+    {
+      "common_name": "Lion",
+      "scientific_name": "Panthera leo",
+      "conservation_status": "Vulnerable",
+      "geographical_data": {
+        "regions": [
+          "Africa",
+          "Asia"
+        ],
+        "range_countries": [
+          "South Africa",
+          "Tanzania",
+          "Kenya",
+          "Botswana",
+          "Zimbabwe",
+          "India (Gir Forest only)",
+          "Namibia",
+          "Zambia"
+        ],
+        "extinct_in_former_range": [
+          "North Africa",
+          "Middle East",
+          "Southeast Europe"
+        ]
+      },
+      "habitat_types": [
+        "Savanna",
+        "Grasslands",
+        "Open woodlands"
+      ]
+    },
+    {
+      "common_name": "Jaguar",
+      "scientific_name": "Panthera onca",
+      "conservation_status": "Near Threatened",
+      "geographical_data": {
+        "regions": [
+          "Central America",
+          "South America"
+        ],
+        "range_countries": [
+          "Brazil",
+          "Mexico",
+          "Argentina",
+          "Bolivia",
+          "Colombia",
+          "Peru",
+          "Paraguay",
+          "Costa Rica",
+          "Belize",
+          "Suriname"
+        ],
+        "notable_presence": [
+          "Amazon River Basin (89% of population)"
+        ]
+      },
+      "habitat_types": [
+        "Tropical rainforests",
+        "Wetlands",
+        "Arid scrub"
+      ]
+    },
+    {
+      "common_name": "Snow Leopard",
+      "scientific_name": "Panthera uncia",
+      "conservation_status": "Vulnerable",
+      "geographical_data": {
+        "regions": [
+          "Central Asia"
+        ],
+        "range_countries": [
+          "China",
+          "Mongolia",
+          "India",
+          "Kyrgyzstan",
+          "Pakistan",
+          "Nepal",
+          "Russia",
+          "Tajikistan",
+          "Kazakhstan",
+          "Bhutan"
+        ]
+      },
+      "habitat_types": [
+        "High-altitude alpine zones",
+        "Rocky mountain ridges"
+      ]
+    },
+    {
+      "common_name": "Iriomote Cat",
+      "scientific_name": "Prionailurus bengalensis iriomotensis",
+      "conservation_status": "Critically Endangered",
+      "geographical_data": {
+        "regions": [
+          "East Asia"
+        ],
+        "range_countries": [
+          "Japan"
+        ],
+        "specific_location": [
+          "Iriomote Island (Ryukyu Archipelago)"
+        ]
+      },
+      "habitat_types": [
+        "Subtropical forests",
+        "Mangrove edges"
+      ]
+    },
+    {
+      "common_name": "Clouded Leopard",
+      "scientific_name": "Neofelis nebulosa",
+      "conservation_status": "Vulnerable",
+      "wild_population_est": 10000,
+      "geographical_data": {
+        "regions": [
+          "Southeast Asia",
+          "Southern China"
+        ],
+        "habitat": "Tropical and subtropical forests"
+      },
+      "habitat_types": [
+        "Tropical and subtropical forests"
+      ],
+      "age_range": {
+        "wild_avg": 11,
+        "captive_max": 17
+      },
+      "threats": [
+        "Deforestation",
+        "Illegal wildlife trade"
+      ]
+    },
+    {
+      "common_name": "Sunda Clouded Leopard",
+      "scientific_name": "Neofelis diardi",
+      "conservation_status": "Vulnerable",
+      "wild_population_est": "Unknown",
+      "geographical_data": {
+        "regions": [
+          "Borneo",
+          "Sumatra"
+        ],
+        "habitat": "Lowland rainforests"
+      },
+      "habitat_types": [
+        "Lowland rainforests"
+      ],
+      "age_range": {
+        "wild_avg": "Unknown",
+        "captive_max": 15
+      },
+      "threats": [
+        "Palm oil plantations",
+        "Habitat loss"
+      ]
+    },
+    {
+      "common_name": "Cheetah",
+      "scientific_name": "Acinonyx jubatus",
+      "conservation_status": "Vulnerable",
+      "wild_population_est": 7100,
+      "geographical_data": {
+        "regions": [
+          "Africa",
+          "Iran"
+        ],
+        "habitat": "Savannas, grasslands, arid mountain ranges"
+      },
+      "habitat_types": [
+        "Savannas",
+        "Grasslands",
+        "Arid mountain ranges"
+      ],
+      "age_range": {
+        "wild_avg": 12,
+        "captive_max": 20
+      },
+      "threats": [
+        "Low genetic diversity",
+        "Human-wildlife conflict"
+      ]
+    },
+    {
+      "common_name": "Cougar (Puma/Mountain Lion)",
+      "scientific_name": "Puma concolor",
+      "conservation_status": "Least Concern",
+      "wild_population_est": "Unknown",
+      "geographical_data": {
+        "regions": [
+          "North America",
+          "South America"
+        ],
+        "habitat": "Highly adaptable (mountains, deserts, forests)"
+      },
+      "habitat_types": [
+        "Mountains",
+        "Deserts",
+        "Forests"
+      ],
+      "age_range": {
+        "wild_avg": 10,
+        "captive_max": 21
+      },
+      "threats": [
+        "Habitat fragmentation",
+        "Road mortality"
+      ]
+    },
+    {
+      "common_name": "Eurasian Lynx",
+      "scientific_name": "Lynx lynx",
+      "conservation_status": "Least Concern",
+      "wild_population_est": 50000,
+      "geographical_data": {
+        "regions": [
+          "Europe",
+          "Central Asia",
+          "Siberia"
+        ],
+        "habitat": "Boreal and temperate forests"
+      },
+      "habitat_types": [
+        "Boreal forests",
+        "Temperate forests"
+      ],
+      "age_range": {
+        "wild_avg": 15,
+        "captive_max": 25
+      },
+      "threats": [
+        "Poaching",
+        "Reduction in prey base"
+      ]
+    },
+    {
+      "common_name": "Iberian Lynx",
+      "scientific_name": "Lynx pardinus",
+      "conservation_status": "Endangered",
+      "wild_population_est": 1100,
+      "geographical_data": {
+        "regions": [
+          "Spain",
+          "Portugal"
+        ],
+        "habitat": "Mediterranean scrubland"
+      },
+      "habitat_types": [
+        "Mediterranean scrubland"
+      ],
+      "age_range": {
+        "wild_avg": 13,
+        "captive_max": 15
+      },
+      "threats": [
+        "Loss of rabbit population",
+        "Road accidents"
+      ]
+    }
+  ]
+}
