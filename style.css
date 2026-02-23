@@ -51,7 +51,7 @@ body {
     object-fit: fill; /* Ensure it stretches exactly to container size to match Figma coordinates */
     display: block;
     opacity: 0.4; /* Stronger fade for better contrast with stickers */
-    /* No filter needed if SVG is already white/gray. */
+
 }
 
 #main-title {
@@ -100,8 +100,8 @@ body.is-zoomed #main-title {
     /* Default sticker style - ensuring they are circular for the ring */
     border-radius: 50%;
     /* Add a default border or padding if needed */
-    box-sizing: border-box; /* Include border in width/height */
-    /* If we use border, it might shift layout slightly unless we use box-shadow or outline */
+    box-sizing: border-box; 
+   
 }
 
 /* Status Rings */
