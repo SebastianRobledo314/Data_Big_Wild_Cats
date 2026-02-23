@@ -22,10 +22,6 @@ body {
     
     /* Ensure it doesn't exceed viewport height */
     max-height: 100vh;
-    /* If height is the constraint, width adjusts automatically via aspect-ratio 
-       Wait, standard excessive width won't shrink automatically with just max-height on a block.
-       We nneed to constrain width based on aspect ratio if height is limited.
-       Or simpler: use vh/vw directly. */
     width: min(100vw, 154.69vh); /* 1728/1117 * 100vh = 154.69vh (approx) */
     height: min(100vh, 64.64vw); /* 1117/1728 * 100vw = 64.64vw (approx) */
     
@@ -62,7 +58,7 @@ body {
     position: absolute;
     width: 100%;
     text-align: center;
-    top: 89px;
+    top: 5%;
     font-size: 100px; 
     font-family: 'Lakki Reddy', cursive;
     background: linear-gradient(180deg, #F5D442 0%, #C49A1A 100%);
@@ -154,106 +150,81 @@ body.is-zoomed .cat-sticker {
     animation-play-state: paused; /* Pause floating on hover */
 }
 
-/* Positions from Figma (adjusted for slightly different map projection) */
-/* The layout is roughly:
-   Lion: Africa (Left/Center bottom)
-   Cheetah: Africa (Right bottom)
-   Leopard: Africa/Asia (Right middle)
-   Cougar: North America (Left top/middle)
-   Jaguar: South America (Left bottom)
-   Tiger: Asia (Right center)
-   Snow Leopard: Central Asia (Right top)
-   Eurasian Lynx: Europe/Asia (Top center)
-   Clouded Leopard: SE Asia (Right bottom)
-   Iberian Lynx: Europe (Spain/Portugal) -> Need to fix "Liberia" to "Iberian"
-   Iriomote Cat: Japan (Far right)
-*/
-
 #cat-lion {
-    left: 53%; /* 881/1728 */
-    top: 55%; /* 621/1117 */
+    left: 52%; /* 881/1728 */
+    top: 42%; /* 621/1117 */
     width: 66px;
     height: 66px;
 }
 
 #cat-cheetah {
-    left: 58%; /* 965/1728 */
-    top: 64%; /* 721/1117 */
+    left: 53%; /* 965/1728 */
+    top: 58%; /* 721/1117 */
     width: 66px;
     height: 66px;
 }
 
 #cat-cougar {
     left: 16%; /* 287/1728 - North America */
-    top: 50%; /* 561/1117 */
-    width: 67px;
-    height: 73px;
+    top: 27%; /* 561/1117 */
+    width: 66px;
+    height: 66px;
 }
 
 #cat-leopard {
-    left: 74%; /* 1282/1728 - Asia/Africa border? */
-    top: 57%; /* 634/1117 */
-    width: 67px;
-    height: 73px;
+    left: 70%; /* 1282/1728 - Asia/Africa border? */
+    top: 34%; /* 634/1117 */
+    width: 66px;
+    height: 66px;
 }
 
 #cat-clouded-leopard {
-    left: 80%; /* 1379/1728 - SE Asia */
-    top: 54%; /* 605/1117 */
+    left: 77%; /* 1379/1728 - SE Asia */
+    top: 38%; /* 605/1117 */
     width: 54px;
     height: 58px;
 }
 
 #cat-jaguar {
-    left: 28%; /* 480/1728 - South America */
-    top: 67%; /* 754/1117 */
-    width: 67px;
-    height: 73px;
+    left: 24%; /* 480/1728 - South America */
+    top: 50%; /* 754/1117 */
+    width: 66px;
+    height: 66px;
 }
 
 #cat-tiger {
-    left: 81%; /* 1399/1728 - Asia */
-    top: 35%; /* 398/1117 */
-    width: 67px;
-    height: 73px;
+    left: 75%; /* 1399/1728 - Asia */
+    top: 27%; /* 398/1117 */
+    width: 66px;
+    height: 66px;
 }
 
 #cat-snow-leopard {
-    left: 68%; /* 1173/1728 - Central Asia */
+    left: 63%; /* 1173/1728 - Central Asia */
     top: 31%; /* 351/1117 */
-    width: 80px;
-    height: 84px;
+    width: 66px;
+    height: 66px;
 }
 
 #cat-eurasian-lynx {
-    left: 60%; /* 1031/1728 - Europe/Russia */
-    top: 38%; /* 427/1117 */
+    left: 55%; /* 1031/1728 - Europe/Russia */
+    top: 24%; /* 427/1117 */
     width: 58px;
     height: 62px;
 }
 
 #cat-iberian-lynx {
-    /* Spain/Portugal is approx 48% left, 35% top on this map? 
-       Figma had 823/1728 = 47%, 723/1117 = 64% (which puts it in Africa/Antarctica? Wait. 723px top is low.)
-       Ah, maybe "Liberia Lynx" was actually meant to be in Africa (Liberia)?
-       The user corrected "Liberia" to "Iberian" previously, but position might have been for Liberia.
-       Iberian Lynx is in Spain. Let's move it to Spain visually.
-       Spain is roughly left: 47%, top: 35% on a standard map? No, Europe is top ~20-30%.
-       Africa starts around 40-50%.
-       Figma Y: 723px is definitely southern hemisphere or deep Africa if height is 1117.
-       I'll adjust to likely Spain coordinates for a standard map.
-    */
-    left: 47%; 
-    top: 36%;
+    left: 44%; 
+    top: 46%;
     width: 58px;
     height: 62px;
 }
 
 #cat-iriomote-cat {
-    left: 87%; /* 1509/1728 - Japan */
-    top: 51%; /* 574/1117 */
-    width: 80px;
-    height: 84px;
+    left: 82%; /* 1509/1728 - Japan */
+    top: 31%; /* 574/1117 */
+    width: 66px;
+    height: 66px;
 }
 
 #info-board {
@@ -301,8 +272,6 @@ body.is-zoomed #info-board {
     left: 0;
     width: 100%;
     font-family: 'Lakki Reddy', cursive;
-    /* Use container query units or viewport units for font size if possible, 
-       but simplified: use percentage of container height/width */
     
     font-size: min(8vw, 8vh); /* Responsive font size */
     background: linear-gradient(180deg, #F5D442 0%, #C49A1A 100%);
