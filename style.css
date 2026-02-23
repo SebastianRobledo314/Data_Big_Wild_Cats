@@ -1,53 +1,377 @@
 body {
     font-family: sans-serif;
-    background-color: #f0f0f0;
+    background-color: #9db0c5;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
     display: flex;
     justify-content: center;
-    padding: 20px;
+    align-items: center; /* Center vertically */
+    height: 100vh;
+    width: 100vw;
 }
 
 #main-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    max-width: 800px;
+    position: relative;
+    /* Maintain aspect ratio */
+    aspect-ratio: 1728 / 1117;
+    
+    /* Fit within viewport */
     width: 100%;
+    height: auto;
+    
+    /* Ensure it doesn't exceed viewport height */
+    max-height: 100vh;
+    /* If height is the constraint, width adjusts automatically via aspect-ratio 
+       Wait, standard excessive width won't shrink automatically with just max-height on a block.
+       We nneed to constrain width based on aspect ratio if height is limited.
+       Or simpler: use vh/vw directly. */
+    width: min(100vw, 154.69vh); /* 1728/1117 * 100vh = 154.69vh (approx) */
+    height: min(100vh, 64.64vw); /* 1117/1728 * 100vw = 64.64vw (approx) */
+    
+    background-color: #9db0c5;
+    overflow: hidden; 
 }
 
-h1 {
+#zoom-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0 0; 
+    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth zoom */
+}
+
+#map-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; 
+}
+
+#world-map {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Ensure it stretches exactly to container size to match Figma coordinates */
+    display: block;
+    opacity: 0.4; /* Stronger fade for better contrast with stickers */
+    /* No filter needed if SVG is already white/gray. */
+}
+
+#main-title {
+    position: absolute;
+    width: 100%;
     text-align: center;
-    color: #333;
+    top: 89px;
+    font-size: 100px; 
+    font-family: 'Lakki Reddy', cursive;
+    background: linear-gradient(180deg, #F5D442 0%, #C49A1A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none; /* text-shadow doesn't work with gradient text */
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin: 0;
+    z-index: 20;
+    pointer-events: none; 
+    transition: opacity 0.5s;
 }
 
-#button-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 20px;
+/* Hide main title when zoomed */
+body.is-zoomed #main-title {
+    opacity: 0;
 }
 
-button {
-    padding: 10px 15px;
-    font-size: 14px;
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0px); }
+}
+
+.cat-sticker {
+    position: absolute;
     cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
+    transition: transform 0.3s ease, opacity 0.3s;
+    z-index: 10;
+    /* Combine animations: fade in once, then float forever */
+    animation: float 3s ease-in-out infinite; 
+    
+    /* Default sticker style - ensuring they are circular for the ring */
+    border-radius: 50%;
+    /* Add a default border or padding if needed */
+    box-sizing: border-box; /* Include border in width/height */
+    /* If we use border, it might shift layout slightly unless we use box-shadow or outline */
+}
+
+/* Status Rings */
+.status-green {
+    box-shadow: 0 0 0 4px #4CAF50, 0 0 10px rgba(76, 175, 80, 0.5); /* Material Green */
+}
+
+.status-yellow {
+    box-shadow: 0 0 0 4px #FFC107, 0 0 10px rgba(255, 193, 7, 0.5); /* Material Amber */
+}
+
+.status-orange {
+    box-shadow: 0 0 0 4px #FF9800, 0 0 10px rgba(255, 152, 0, 0.5); /* Material Orange */
+}
+
+.status-red {
+    box-shadow: 0 0 0 4px #F44336, 0 0 10px rgba(244, 67, 54, 0.5); /* Material Red */
+}
+
+/* Hide other stickers when zoomed */
+body.is-zoomed .cat-sticker {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Stagger the floating animation for specialized timing */
+.cat-sticker:nth-child(2n) {
+    animation-delay: 0.5s;
+}
+
+.cat-sticker:nth-child(3n) {
+    animation-delay: 1s;
+}
+
+.cat-sticker:nth-child(4n) {
+    animation-delay: 1.5s;
+}
+
+.cat-sticker:nth-child(5n) {
+    animation-delay: 2s;
+}
+
+.cat-sticker:hover {
+    transform: scale(1.2) translateY(-10px); /* Enhance scale and lift on hover */
+    z-index: 15;
+    animation-play-state: paused; /* Pause floating on hover */
+}
+
+/* Positions from Figma (adjusted for slightly different map projection) */
+/* The layout is roughly:
+   Lion: Africa (Left/Center bottom)
+   Cheetah: Africa (Right bottom)
+   Leopard: Africa/Asia (Right middle)
+   Cougar: North America (Left top/middle)
+   Jaguar: South America (Left bottom)
+   Tiger: Asia (Right center)
+   Snow Leopard: Central Asia (Right top)
+   Eurasian Lynx: Europe/Asia (Top center)
+   Clouded Leopard: SE Asia (Right bottom)
+   Iberian Lynx: Europe (Spain/Portugal) -> Need to fix "Liberia" to "Iberian"
+   Iriomote Cat: Japan (Far right)
+*/
+
+#cat-lion {
+    left: 53%; /* 881/1728 */
+    top: 55%; /* 621/1117 */
+    width: 66px;
+    height: 66px;
+}
+
+#cat-cheetah {
+    left: 58%; /* 965/1728 */
+    top: 64%; /* 721/1117 */
+    width: 66px;
+    height: 66px;
+}
+
+#cat-cougar {
+    left: 16%; /* 287/1728 - North America */
+    top: 50%; /* 561/1117 */
+    width: 67px;
+    height: 73px;
+}
+
+#cat-leopard {
+    left: 74%; /* 1282/1728 - Asia/Africa border? */
+    top: 57%; /* 634/1117 */
+    width: 67px;
+    height: 73px;
+}
+
+#cat-clouded-leopard {
+    left: 80%; /* 1379/1728 - SE Asia */
+    top: 54%; /* 605/1117 */
+    width: 54px;
+    height: 58px;
+}
+
+#cat-jaguar {
+    left: 28%; /* 480/1728 - South America */
+    top: 67%; /* 754/1117 */
+    width: 67px;
+    height: 73px;
+}
+
+#cat-tiger {
+    left: 81%; /* 1399/1728 - Asia */
+    top: 35%; /* 398/1117 */
+    width: 67px;
+    height: 73px;
+}
+
+#cat-snow-leopard {
+    left: 68%; /* 1173/1728 - Central Asia */
+    top: 31%; /* 351/1117 */
+    width: 80px;
+    height: 84px;
+}
+
+#cat-eurasian-lynx {
+    left: 60%; /* 1031/1728 - Europe/Russia */
+    top: 38%; /* 427/1117 */
+    width: 58px;
+    height: 62px;
+}
+
+#cat-iberian-lynx {
+    /* Spain/Portugal is approx 48% left, 35% top on this map? 
+       Figma had 823/1728 = 47%, 723/1117 = 64% (which puts it in Africa/Antarctica? Wait. 723px top is low.)
+       Ah, maybe "Liberia Lynx" was actually meant to be in Africa (Liberia)?
+       The user corrected "Liberia" to "Iberian" previously, but position might have been for Liberia.
+       Iberian Lynx is in Spain. Let's move it to Spain visually.
+       Spain is roughly left: 47%, top: 35% on a standard map? No, Europe is top ~20-30%.
+       Africa starts around 40-50%.
+       Figma Y: 723px is definitely southern hemisphere or deep Africa if height is 1117.
+       I'll adjust to likely Spain coordinates for a standard map.
+    */
+    left: 47%; 
+    top: 36%;
+    width: 58px;
+    height: 62px;
+}
+
+#cat-iriomote-cat {
+    left: 87%; /* 1509/1728 - Japan */
+    top: 51%; /* 574/1117 */
+    width: 80px;
+    height: 84px;
+}
+
+#info-board {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    pointer-events: none; /* Let clicks pass unless active */
+    opacity: 0;
+    transition: opacity 0.5s ease 0.5s; /* Delay fade in until zoom finishes */
+    
+    /* Use flexbox to center content regardless of scale */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body.is-zoomed #info-board {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#close-btn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 8%; /* Relative size */
+    aspect-ratio: 1;
+    background: none;
     border: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    cursor: pointer;
+    z-index: 101;
 }
 
-button:hover {
-    background-color: #45a049;
+#close-btn img {
+    width: 100%;
+    height: 100%;
 }
 
-#info-display {
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 4px;
-    background-color: #fafafa;
+#info-title {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 100%;
+    font-family: 'Lakki Reddy', cursive;
+    /* Use container query units or viewport units for font size if possible, 
+       but simplified: use percentage of container height/width */
+    
+    font-size: min(8vw, 8vh); /* Responsive font size */
+    background: linear-gradient(180deg, #F5D442 0%, #C49A1A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    text-align: center;
+    margin: 0;
+    pointer-events: none;
+}
+
+/* Container for the main content card to ensure it stays centered and sized relative to view */
+#info-content-container {
+    position: relative;
+    width: 90%;
+    height: 70%; 
+    margin-top: 10%; /* push down for title */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+
+#info-photo-container {
+    width: 40%;
+    height: 80%;
+    border: 1px solid black;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+#info-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#info-body {
+    width: 55%;
+    height: 80%;
+    background: rgba(217, 217, 217, 0.9); /* More opacity for readability */
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2vw;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Text styles inside info body */
+#info-body p, #info-geo {
+    font-family: 'Lakki Reddy', cursive; 
+    font-size: min(2.5vw, 2.5vh); /* Responsive font */
+    color: #333;
+    padding: 0.5em 0;
+    margin: 0; 
+}
+
+#info-common { display: none; } 
+
+#info-scientific, #info-status, #info-habitats {
+    /* margin-top: 10px; */
+}
     min-height: 100px;
 }
 

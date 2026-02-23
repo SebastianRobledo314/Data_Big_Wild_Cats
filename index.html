@@ -3,18 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Wild Cats</title>
+    <title>Wild Cats of the World</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Lakki Reddy -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 </head>
 <body>
     <div id="main-container">
-        <h1>Big Wild Cats Data</h1>
-        <div id="button-container"></div>
-        <div id="info-display">
-            <p>Select a cat to see details.</p>
+        <!-- Main Title (fixed on screen or part of zoom? Figma has it fixed on top) -->
+        <!-- In Figma, the title is "Snow Leopard" when zoomed. So we might hide the main title? -->
+        <h1 id="main-title">Wild cats of the World!</h1>
+
+        <!-- Content that will be zoomed -->
+        <div id="zoom-layer">
+            <!-- Background Map -->
+            <div id="map-container">
+                <!-- Switched to SVG for better scaling -->
+                <img src="assets/images/world-map.svg" alt="World Map" id="world-map">
+            </div>
+
+            <div id="cats-layer">
+                <img id="cat-lion" class="cat-sticker" src="assets/images/lion.png" alt="Lion" data-species="Lion">
+                <img id="cat-cheetah" class="cat-sticker" src="assets/images/cheeta.png" alt="Cheetah" data-species="Cheetah">
+                <img id="cat-cougar" class="cat-sticker" src="assets/images/cougar.png" alt="Cougar" data-species="Cougar (Puma/Mountain Lion)">
+                <img id="cat-leopard" class="cat-sticker" src="assets/images/leopard.png" alt="Leopard" data-species="Leopard">
+                <img id="cat-clouded-leopard" class="cat-sticker" src="assets/images/clouded_leopard.png" alt="Clouded Leopard" data-species="Clouded Leopard">
+                <img id="cat-jaguar" class="cat-sticker" src="assets/images/jaguar.png" alt="Jaguar" data-species="Jaguar">
+                <img id="cat-tiger" class="cat-sticker" src="assets/images/tiger.png" alt="Tiger" data-species="Tiger">
+                <img id="cat-snow-leopard" class="cat-sticker" src="assets/images/snow_leopard.png" alt="Snow Leopard" data-species="Snow Leopard">
+                <img id="cat-eurasian-lynx" class="cat-sticker" src="assets/images/eurasian_lynx.png" alt="Eurasian Lynx" data-species="Eurasian Lynx">
+                <img id="cat-iberian-lynx" class="cat-sticker" src="assets/images/liberia_lynx.png" alt="Iberian Lynx" data-species="Iberian Lynx">
+                <img id="cat-iriomote-cat" class="cat-sticker" src="assets/images/iriommote.png" alt="Iriomote Cat" data-species="Iriomote Cat">
+            </div>
+        </div>
+
+        <!-- Info Board / Zoomed Details -->
+        <div id="info-board">
+            <button id="close-btn" aria-label="Close">
+                <img src="assets/ui/close_x.png" alt="X">
+            </button>
+            <h2 id="info-title">Cat Name</h2>
+            
+            <div id="info-content-container">
+                 <div id="info-photo-container">
+                    <img id="info-photo" src="assets/ui/snow_leopard_photo.png" alt="Cat Photo">
+                </div>
+                
+                <div id="info-body">
+                    <p id="info-common">Common Name</p>
+                    <p id="info-scientific">Scientific Name</p>
+                    <p id="info-status">Status</p>
+                    <p id="info-habitats">Habitats</p>
+                    <div id="info-geo">Geo Data</div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="sketch.js"></script>
 </body>
 </html>
+
