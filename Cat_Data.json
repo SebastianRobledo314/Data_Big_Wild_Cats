@@ -68,6 +68,37 @@
       ]
     },
     {
+      "common_name": "Leopard",
+      "scientific_name": "Panthera pardus",
+      "conservation_status": "Vulnerable",
+      "geographical_data": {
+        "regions": [
+          "Africa",
+          "Asia"
+        ],
+        "range_countries": [
+          "Sub-Saharan Africa",
+          "India",
+          "China",
+          "Central Asia"
+        ],
+        "habitat": "Highly adaptable (rainforests to savannas)"
+      },
+      "habitat_types": [
+        "Rainforests",
+        "Savannas",
+        "Mountains"
+      ],
+      "age_range": {
+        "wild_avg": 12,
+        "captive_max": 23
+      },
+      "threats": [
+        "Habitat loss",
+        "Conflict with humans"
+      ]
+    },
+    {
       "common_name": "Jaguar",
       "scientific_name": "Panthera onca",
       "conservation_status": "Near Threatened",

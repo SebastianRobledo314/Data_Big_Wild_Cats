@@ -112,15 +112,35 @@ function updateInfoBoard(cat) {
 }
 
 function findCatData(speciesName) {
-    if (!catData || !catData.species_list) return null;
+    if (!catData || !catData.species_list) {
+        console.error("Cat data not loaded");
+        return null;
+    }
+    
+    // Normalize input
+    const cleanName = speciesName ? speciesName.trim() : "";
+    console.log("Searching for cat:", cleanName);
+
+    // Explicit check for Jaguar to prevent any partial match issues
+    if (cleanName.toLowerCase() === "jaguar") {
+        return catData.species_list.find(c => c.common_name === "Jaguar");
+    }
     
     // Find the cat in the list
-    // We try exact match first
-    let cat = catData.species_list.find(c => c.common_name === speciesName);
+    // We try exact match first (case-insensitive)
+    let cat = catData.species_list.find(c => c.common_name.trim().toLowerCase() === cleanName.toLowerCase());
     
-    // If not found, try partial match (e.g. "Cougar" vs "Cougar (Puma/Mountain Lion)")
     if (!cat) {
-        cat = catData.species_list.find(c => c.common_name.includes(speciesName) || speciesName.includes(c.common_name));
+        // Fallback to partial match, but be careful not to match "Leopard" to "Snow Leopard" incorrectly
+        // We only allow partial match if the search term is sufficiently long or specific
+        cat = catData.species_list.find(c => 
+            c.common_name.toLowerCase().includes(cleanName.toLowerCase()) || 
+            (cleanName.length > 3 && cleanName.toLowerCase().includes(c.common_name.toLowerCase()))
+        );
+    }
+    
+    if (!cat) {
+        console.warn("No cat found for:", cleanName);
     }
     
     return cat;
@@ -131,19 +151,35 @@ function displayInfo(cat, displayContainer) {
 }
 
 function getCatImage(commonName) {
-    const images = {
-        "Iriomote Cat": "assets/wild cat/Iriomote_Cat1.jpg",
-        "Snow Leopard": "assets/wild cat/Snow_Leopard2.jpg",
-        "Clouded Leopard": "assets/wild cat/Clouded_Leopard2.jpg",
-        "Eurasian Lynx": "assets/wild cat/Eurasian_Lynx2.jpg.jpg",
-        "Jaguar": "assets/wild cat/Jaguar1.jpg",
-        "Tiger": "assets/wild cat/Tiger2.jpg",
-        "Leopard": "assets/wild cat/leopard1.jpg",  // check capitalization
-        "Lion": "assets/wild cat/Lion2.jpg",
-        "Cheetah": "assets/wild cat/Cheeta2.jpg",
-        "Cougar (Puma/Mountain Lion)": "assets/wild cat/Puma2.jpg",
-        "Iberian Lynx": "assets/wild cat/Liberian_Lynx1.jpg" // Assuming Liberian = Iberian here
-    };
+    if (!commonName) return "assets/ui/snow_leopard_photo.png";
+    const name = commonName.trim();
+    console.log("Getting image for:", name);
+
+    // Ensure path uses %20 for spaces
+    // const wildCatPath = "assets/wild%20cat/"; 
+    const wildCatPath = "assets/wild cat/";
     
-    return images[commonName] || "assets/ui/snow_leopard_photo.png"; // Default
+    // Map common names to file names explicitly
+    const imageMap = {
+        "Iriomote Cat": "Iriomote_Cat1.jpg",
+        "Snow Leopard": "Snow_Leopard2.jpg",
+        "Clouded Leopard": "Clouded_Leopard2.jpg",
+        "Eurasian Lynx": "Eurasian_Lynx2.jpg",
+        "Jaguar": "Jaguar1.jpg",
+        "Tiger": "Tiger2.jpg",
+        "Leopard": "leopard1.jpg", 
+        "Lion": "Lion2.jpg",
+        "Cheetah": "Cheeta2.jpg",
+        "Cougar (Puma/Mountain Lion)": "Puma2.jpg",
+        "Iberian Lynx": "Liberian_Lynx1.jpg" 
+    };
+
+    const fileName = imageMap[name];
+    
+    if (fileName) {
+        return wildCatPath + fileName;
+    }
+    
+    console.warn("Image not found for:", name, "Using default.");
+    return "assets/ui/snow_leopard_photo.png"; 
 }
