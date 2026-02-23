@@ -98,6 +98,12 @@ function updateInfoBoard(cat) {
     select('#info-status').html(`Status: ${cat.conservation_status}`);
     select('#info-habitats').html(`Habitats: ${cat.habitat_types.join(', ')}`);
     
+    // Update Image
+    const imgPath = getCatImage(cat.common_name);
+    if (imgPath) {
+        select('#info-photo').attribute('src', imgPath);
+    }
+
     let geoText = 'Locations: ';
     if (cat.geographical_data && cat.geographical_data.range_countries) {
         geoText += cat.geographical_data.range_countries.slice(0, 5).join(', ') + (cat.geographical_data.range_countries.length > 5 ? '...' : '');
@@ -122,4 +128,22 @@ function findCatData(speciesName) {
 
 function displayInfo(cat, displayContainer) {
    // Legacy function, replaced by updateInfoBoard logic directly
+}
+
+function getCatImage(commonName) {
+    const images = {
+        "Iriomote Cat": "assets/wild cat/Iriomote_Cat1.jpg",
+        "Snow Leopard": "assets/wild cat/Snow_Leopard2.jpg",
+        "Clouded Leopard": "assets/wild cat/Clouded_Leopard2.jpg",
+        "Eurasian Lynx": "assets/wild cat/Eurasian_Lynx2.jpg.jpg",
+        "Jaguar": "assets/wild cat/Jaguar1.jpg",
+        "Tiger": "assets/wild cat/Tiger2.jpg",
+        "Leopard": "assets/wild cat/leopard1.jpg",  // check capitalization
+        "Lion": "assets/wild cat/Lion2.jpg",
+        "Cheetah": "assets/wild cat/Cheeta2.jpg",
+        "Cougar (Puma/Mountain Lion)": "assets/wild cat/Puma2.jpg",
+        "Iberian Lynx": "assets/wild cat/Liberian_Lynx1.jpg" // Assuming Liberian = Iberian here
+    };
+    
+    return images[commonName] || "assets/ui/snow_leopard_photo.png"; // Default
 }
