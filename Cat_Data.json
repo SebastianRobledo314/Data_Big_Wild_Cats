@@ -1,586 +1,249 @@
 {
   "dataset_metadata": {
-    "last_updated": "2026-02-16",
-    "total_species_covered": 11,
-    "primary_source": "IUCN Red List, Panthera.org, and World Population Review 2026"
+    "last_updated": "2026-02-24",
+    "total_species_covered": 12,
+    "primary_source": "IUCN Red List, Panthera.org, WWF, and World Population Review 2026"
   },
   "species_list": [
     {
       "common_name": "Tiger",
       "scientific_name": "Panthera tigris",
       "conservation_status": "Endangered",
-      "wild_population_est": null,
-      "geographical_data": {
-        "regions": [
-          "Asia"
-        ],
-        "range_countries": [
-          "India",
-          "Russia",
-          "Indonesia",
-          "Nepal",
-          "Thailand",
-          "Malaysia",
-          "Bangladesh",
-          "Bhutan",
-          "China",
-          "Myanmar"
-        ],
-        "strongholds": [
-          "India (70% of wild population)",
-          "Russian Far East"
-        ]
-      },
-      "habitat_types": [
-        "Tropical rainforests",
-        "Snowy birch forests",
-        "Mangrove swamps"
-      ],
-      "age_range": null,
-      "threats": [],
       "population_history": [
-        {
-          "period": "Historic (1900)",
-          "estimate": 100000
-        },
-        {
-          "period": "Mid-Century (1970)",
-          "estimate": 4000
-        },
-        {
-          "period": "Modern (2010)",
-          "estimate": 3200
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 5578
-        }
-      ]
+        { "period": "Historic (1900)", "estimate": 100000, "note": "Widespread across Asia" },
+        { "period": "Mid-Century (1970)", "estimate": 4000, "note": "Heavy poaching/habitat loss" },
+        { "period": "Modern (2010)", "estimate": 3200, "note": "All-time population low" },
+        { "period": "Current (2026)", "estimate": 5578, "note": "Significant recovery in India/Russia" }
+      ],
+      "geographical_data": {
+        "regions": ["Asia"],
+        "range_countries": ["India", "Russia", "Indonesia", "Nepal", "Thailand", "Malaysia", "Bangladesh", "Bhutan", "China", "Myanmar"],
+        "habitat_types": ["Tropical rainforests", "Snowy birch forests", "Mangrove swamps"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": 10, "captive_max": 20 },
+        "primary_threats": ["Poaching", "Habitat fragmentation", "Prey depletion"]
+      }
     },
     {
       "common_name": "Lion",
       "scientific_name": "Panthera leo",
       "conservation_status": "Vulnerable",
-      "wild_population_est": null,
-      "geographical_data": {
-        "regions": [
-          "Africa",
-          "Asia"
-        ],
-        "range_countries": [
-          "South Africa",
-          "Tanzania",
-          "Kenya",
-          "Botswana",
-          "Zimbabwe",
-          "India (Gir Forest only)",
-          "Namibia",
-          "Zambia"
-        ],
-        "extinct_in_former_range": [
-          "North Africa",
-          "Middle East",
-          "Southeast Europe"
-        ]
-      },
-      "habitat_types": [
-        "Savanna",
-        "Grasslands",
-        "Open woodlands"
-      ],
-      "age_range": null,
-      "threats": [],
       "population_history": [
-        {
-          "period": "Historic (1900)",
-          "estimate": 200000
-        },
-        {
-          "period": "Mid-Century (1950)",
-          "estimate": 500000,
-          "note": "Upper historical estimate"
-        },
-        {
-          "period": "Modern (1990)",
-          "estimate": 100000
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 24000
-        }
-      ]
+        { "period": "Historic (1900)", "estimate": 200000, "note": "Vast range across Africa/Asia" },
+        { "period": "Mid-Century (1950)", "estimate": 100000, "note": "Rapid agricultural expansion" },
+        { "period": "Modern (1990)", "estimate": 35000, "note": "Isolated to protected areas" },
+        { "period": "Current (2026)", "estimate": 24000, "note": "Stable in Southern Africa; declining elsewhere" }
+      ],
+      "geographical_data": {
+        "regions": ["Africa", "Asia"],
+        "range_countries": ["South Africa", "Tanzania", "Kenya", "Botswana", "Zimbabwe", "India", "Namibia", "Zambia"],
+        "habitat_types": ["Savanna", "Grasslands", "Open woodlands"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": 12, "captive_max": 25 },
+        "primary_threats": ["Human-wildlife conflict", "Loss of prey", "Trade in parts"]
+      }
     },
     {
       "common_name": "Leopard",
       "scientific_name": "Panthera pardus",
       "conservation_status": "Vulnerable",
-      "wild_population_est": null,
-      "geographical_data": {
-        "regions": [
-          "Africa",
-          "Asia"
-        ],
-        "range_countries": [
-          "Sub-Saharan Africa",
-          "India",
-          "China",
-          "Central Asia"
-        ],
-        "habitat": "Highly adaptable (rainforests to savannas)"
-      },
-      "habitat_types": [
-        "Rainforests",
-        "Savannas",
-        "Mountains"
-      ],
-      "age_range": {
-        "wild_avg": 12,
-        "captive_max": 23
-      },
-      "threats": [
-        "Habitat loss",
-        "Conflict with humans"
-      ],
       "population_history": [
-        {
-          "period": "Historic (1900)",
-          "estimate": 700000,
-          "note": "Extrapolated historical density"
-        },
-        {
-          "period": "Mid-Century (1970)",
-          "estimate": "Stable",
-          "note": "Before major range loss"
-        },
-        {
-          "period": "Modern (2016)",
-          "estimate": "Declining",
-          "note": "Lost 75% of global range"
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 250000,
-          "note": "Broad tentative estimate"
-        }
-      ]
+        { "period": "Historic (1900)", "estimate": 700000, "note": "Most widespread big cat" },
+        { "period": "Mid-Century (1970)", "estimate": 500000, "note": "Loss of range in North Africa/Middle East" },
+        { "period": "Modern (2016)", "estimate": "Declining", "note": "75% range loss confirmed" },
+        { "period": "Current (2026)", "estimate": 250000, "note": "Broad estimate; elusive nature" }
+      ],
+      "geographical_data": {
+        "regions": ["Africa", "Asia"],
+        "range_countries": ["Sub-Saharan Africa", "India", "China", "Central Asia", "Java"],
+        "habitat_types": ["Rainforests", "Savannas", "Mountains", "Deserts"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": 12, "captive_max": 23 },
+        "primary_threats": ["Habitat loss", "Human-wildlife conflict", "Skin trade"]
+      }
     },
     {
       "common_name": "Jaguar",
       "scientific_name": "Panthera onca",
       "conservation_status": "Near Threatened",
-      "wild_population_est": null,
-      "geographical_data": {
-        "regions": [
-          "Central America",
-          "South America"
-        ],
-        "range_countries": [
-          "Brazil",
-          "Mexico",
-          "Argentina",
-          "Bolivia",
-          "Colombia",
-          "Peru",
-          "Paraguay",
-          "Costa Rica",
-          "Belize",
-          "Suriname"
-        ],
-        "notable_presence": [
-          "Amazon River Basin (89% of population)"
-        ]
-      },
-      "habitat_types": [
-        "Tropical rainforests",
-        "Wetlands",
-        "Arid scrub"
-      ],
-      "age_range": null,
-      "threats": [],
       "population_history": [
-        {
-          "period": "Historic (1900)",
-          "estimate": 300000,
-          "note": "Estimated original capacity"
-        },
-        {
-          "period": "Mid-Century (1960)",
-          "estimate": "Extirpated in US",
-          "note": "Mass range contraction"
-        },
-        {
-          "period": "Modern (2010)",
-          "estimate": 64000,
-          "note": "Improved surveying"
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 173000,
-          "note": "Current consensus estimate"
-        }
-      ]
+        { "period": "Historic (1900)", "estimate": 300000, "note": "Range extended to SW United States" },
+        { "period": "Mid-Century (1960)", "estimate": 100000, "note": "Heavy hunting for fur trade" },
+        { "period": "Modern (2010)", "estimate": 64000, "note": "Concentrated in Amazon Basin" },
+        { "period": "Current (2026)", "estimate": 173000, "note": "Improved census mapping in Brazil" }
+      ],
+      "geographical_data": {
+        "regions": ["Central America", "South America"],
+        "range_countries": ["Brazil", "Mexico", "Argentina", "Bolivia", "Colombia", "Peru", "Costa Rica", "Belize"],
+        "habitat_types": ["Tropical rainforests", "Wetlands", "Arid scrub"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": 13, "captive_max": 22 },
+        "primary_threats": ["Deforestation", "Cattle rancher retaliation", "Mining"]
+      }
     },
     {
       "common_name": "Snow Leopard",
       "scientific_name": "Panthera uncia",
       "conservation_status": "Vulnerable",
-      "wild_population_est": null,
-      "geographical_data": {
-        "regions": [
-          "Central Asia"
-        ],
-        "range_countries": [
-          "China",
-          "Mongolia",
-          "India",
-          "Kyrgyzstan",
-          "Pakistan",
-          "Nepal",
-          "Russia",
-          "Tajikistan",
-          "Kazakhstan",
-          "Bhutan"
-        ]
-      },
-      "habitat_types": [
-        "High-altitude alpine zones",
-        "Rocky mountain ridges"
-      ],
-      "age_range": null,
-      "threats": [],
       "population_history": [
-        {
-          "period": "Historic (1900)",
-          "estimate": "Stable",
-          "note": "Occupied 2.5m km\u00b2 range"
-        },
-        {
-          "period": "Mid-Century (1970)",
-          "estimate": "Declining",
-          "note": "Increased poaching"
-        },
-        {
-          "period": "Modern (2016)",
-          "estimate": 7500
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 3386,
-          "note": "Conservative census count"
-        }
-      ]
+        { "period": "Historic (1900)", "estimate": 15000, "note": "Untouched high-altitude range" },
+        { "period": "Mid-Century (1970)", "estimate": 10000, "note": "Increase in livestock competition" },
+        { "period": "Modern (2016)", "estimate": 7500, "note": "First comprehensive global survey" },
+        { "period": "Current (2026)", "estimate": 3386, "note": "Conservative count in core habitat" }
+      ],
+      "geographical_data": {
+        "regions": ["Central Asia"],
+        "range_countries": ["China", "Mongolia", "India", "Kyrgyzstan", "Pakistan", "Nepal", "Russia", "Bhutan"],
+        "habitat_types": ["High-altitude alpine zones", "Rocky mountain ridges"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": 11, "captive_max": 21 },
+        "primary_threats": ["Climate change", "Poaching", "Retaliatory killing"]
+      }
     },
     {
       "common_name": "Iriomote Cat",
       "scientific_name": "Prionailurus bengalensis iriomotensis",
       "conservation_status": "Critically Endangered",
-      "wild_population_est": null,
-      "geographical_data": {
-        "regions": [
-          "East Asia"
-        ],
-        "range_countries": [
-          "Japan"
-        ],
-        "specific_location": [
-          "Iriomote Island (Ryukyu Archipelago)"
-        ]
-      },
-      "habitat_types": [
-        "Subtropical forests",
-        "Mangrove edges"
-      ],
-      "age_range": null,
-      "threats": [],
       "population_history": [
-        {
-          "period": "Historic (1965)",
-          "estimate": "Discovered",
-          "note": "First scientific description"
-        },
-        {
-          "period": "Mid-Century (1980)",
-          "estimate": 100
-        },
-        {
-          "period": "Modern (1994)",
-          "estimate": 100
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 100,
-          "status": "Critically Endangered"
-        }
-      ]
+        { "period": "Historic (1965)", "estimate": "Discovered", "note": "Recently recognized sub-species" },
+        { "period": "Mid-Century (1980)", "estimate": 100, "note": "Small island population ceiling" },
+        { "period": "Modern (1994)", "estimate": 100, "note": "Strict protections implemented" },
+        { "period": "Current (2026)", "estimate": 100, "note": "Highly vulnerable to road accidents" }
+      ],
+      "geographical_data": {
+        "regions": ["East Asia"],
+        "range_countries": ["Japan"],
+        "habitat_types": ["Subtropical forests", "Mangrove edges"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": 8, "captive_max": 15 },
+        "primary_threats": ["Traffic accidents", "Invasive species competition", "Habitat loss"]
+      }
     },
     {
       "common_name": "Clouded Leopard",
       "scientific_name": "Neofelis nebulosa",
       "conservation_status": "Vulnerable",
-      "wild_population_est": 10000,
-      "geographical_data": {
-        "regions": [
-          "Southeast Asia",
-          "Southern China"
-        ],
-        "habitat": "Tropical and subtropical forests"
-      },
-      "habitat_types": [
-        "Tropical and subtropical forests"
-      ],
-      "age_range": {
-        "wild_avg": 11,
-        "captive_max": 17
-      },
-      "threats": [
-        "Deforestation",
-        "Illegal wildlife trade"
-      ],
       "population_history": [
-        {
-          "period": "Historic (1900)",
-          "estimate": "Widespread"
-        },
-        {
-          "period": "Mid-Century (1970)",
-          "estimate": "Declining"
-        },
-        {
-          "period": "Modern (2008)",
-          "estimate": 10000
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 10000,
-          "status": "Vulnerable"
-        }
-      ]
+        { "period": "Historic (1900)", "estimate": 50000, "note": "Widespread across SE Asian forests" },
+        { "period": "Mid-Century (1970)", "estimate": 30000, "note": "Logging in Thailand and Vietnam" },
+        { "period": "Modern (2008)", "estimate": 10000, "note": "Severely fragmented populations" },
+        { "period": "Current (2026)", "estimate": 10000, "note": "Elusive; difficult to track" }
+      ],
+      "geographical_data": {
+        "regions": ["Southeast Asia", "Southern China"],
+        "range_countries": ["Nepal", "Bhutan", "Myanmar", "Thailand", "Vietnam", "China"],
+        "habitat_types": ["Tropical forests", "Subtropical forests"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": 11, "captive_max": 17 },
+        "primary_threats": ["Deforestation", "Illegal wildlife trade", "Loss of prey"]
+      }
     },
     {
       "common_name": "Sunda Clouded Leopard",
       "scientific_name": "Neofelis diardi",
       "conservation_status": "Vulnerable",
-      "wild_population_est": "Unknown",
-      "geographical_data": {
-        "regions": [
-          "Borneo",
-          "Sumatra"
-        ],
-        "habitat": "Lowland rainforests"
-      },
-      "habitat_types": [
-        "Lowland rainforests"
-      ],
-      "age_range": {
-        "wild_avg": "Unknown",
-        "captive_max": 15
-      },
-      "threats": [
-        "Palm oil plantations",
-        "Habitat loss"
-      ],
       "population_history": [
-        {
-          "period": "Historic (1900)",
-          "estimate": "Widespread"
-        },
-        {
-          "period": "Mid-Century (1970)",
-          "estimate": "Declining"
-        },
-        {
-          "period": "Modern (2006)",
-          "estimate": "Split Species",
-          "note": "Recognized as distinct from N. nebulosa"
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 4500,
-          "note": "Estimated <10,000"
-        }
-      ]
+        { "period": "Historic (1900)", "estimate": 25000, "note": "Dense populations on Borneo/Sumatra" },
+        { "period": "Mid-Century (1970)", "estimate": 15000, "note": "Initial palm oil conversions" },
+        { "period": "Modern (2006)", "estimate": 8000, "note": "Declared distinct species from Mainland" },
+        { "period": "Current (2026)", "estimate": 4500, "note": "Urgent concern due to plantation expansion" }
+      ],
+      "geographical_data": {
+        "regions": ["Borneo", "Sumatra"],
+        "range_countries": ["Indonesia", "Malaysia", "Brunei"],
+        "habitat_types": ["Lowland rainforests", "Montane forests"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": "Unknown", "captive_max": 15 },
+        "primary_threats": ["Palm oil plantations", "Industrial logging", "Poaching"]
+      }
     },
     {
       "common_name": "Cheetah",
       "scientific_name": "Acinonyx jubatus",
       "conservation_status": "Vulnerable",
-      "wild_population_est": 7100,
-      "geographical_data": {
-        "regions": [
-          "Africa",
-          "Iran"
-        ],
-        "habitat": "Savannas, grasslands, arid mountain ranges"
-      },
-      "habitat_types": [
-        "Savannas",
-        "Grasslands",
-        "Arid mountain ranges"
-      ],
-      "age_range": {
-        "wild_avg": 12,
-        "captive_max": 20
-      },
-      "threats": [
-        "Low genetic diversity",
-        "Human-wildlife conflict"
-      ],
       "population_history": [
-        {
-          "period": "Historic (1900)",
-          "estimate": 100000
-        },
-        {
-          "period": "Mid-Century (1975)",
-          "estimate": 15000
-        },
-        {
-          "period": "Modern (2016)",
-          "estimate": 7100
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 7100,
-          "status": "Declining"
-        }
-      ]
+        { "period": "Historic (1900)", "estimate": 100000, "note": "Range from Africa to India" },
+        { "period": "Mid-Century (1975)", "estimate": 15000, "note": "Extinct in most of Asia" },
+        { "period": "Modern (2016)", "estimate": 7100, "note": "Highly fragmented pockets" },
+        { "period": "Current (2026)", "estimate": 7100, "note": "Critical status in Iran and NW Africa" }
+      ],
+      "geographical_data": {
+        "regions": ["Africa", "Asia"],
+        "range_countries": ["Namibia", "Botswana", "South Africa", "Kenya", "Iran", "Algeria"],
+        "habitat_types": ["Savannas", "Grasslands", "Arid mountains"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": 12, "captive_max": 20 },
+        "primary_threats": ["Low genetic diversity", "Human-wildlife conflict", "Pet trade"]
+      }
     },
     {
       "common_name": "Cougar (Puma/Mountain Lion)",
       "scientific_name": "Puma concolor",
       "conservation_status": "Least Concern",
-      "wild_population_est": "Unknown",
-      "geographical_data": {
-        "regions": [
-          "North America",
-          "South America"
-        ],
-        "habitat": "Highly adaptable (mountains, deserts, forests)"
-      },
-      "habitat_types": [
-        "Mountains",
-        "Deserts",
-        "Forests"
-      ],
-      "age_range": {
-        "wild_avg": 10,
-        "captive_max": 21
-      },
-      "threats": [
-        "Habitat fragmentation",
-        "Road mortality"
-      ],
       "population_history": [
-        {
-          "period": "Historic (1900)",
-          "estimate": "Range-wide"
-        },
-        {
-          "period": "Mid-Century (1960)",
-          "estimate": "Heavily Hunted",
-          "note": "Bounty programs active"
-        },
-        {
-          "period": "Modern (1990)",
-          "estimate": "Recovering",
-          "note": "Protections in Western US"
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 50000,
-          "note": "Stable in North America"
-        }
-      ]
+        { "period": "Historic (1900)", "estimate": "High", "note": "Across all of North/South America" },
+        { "period": "Mid-Century (1960)", "estimate": "Low", "note": "Bounty hunting in US West" },
+        { "period": "Modern (1990)", "estimate": 30000, "note": "Protection in Western US states" },
+        { "period": "Current (2026)", "estimate": 50000, "note": "Expanding range in North America" }
+      ],
+      "geographical_data": {
+        "regions": ["North America", "South America"],
+        "range_countries": ["USA", "Canada", "Mexico", "Brazil", "Chile", "Argentina", "Peru"],
+        "habitat_types": ["Mountains", "Deserts", "Forests", "Swamps"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": 10, "captive_max": 21 },
+        "primary_threats": ["Habitat fragmentation", "Road mortality", "Genetic isolation"]
+      }
     },
     {
       "common_name": "Eurasian Lynx",
       "scientific_name": "Lynx lynx",
       "conservation_status": "Least Concern",
-      "wild_population_est": 50000,
-      "geographical_data": {
-        "regions": [
-          "Europe",
-          "Central Asia",
-          "Siberia"
-        ],
-        "habitat": "Boreal and temperate forests"
-      },
-      "habitat_types": [
-        "Boreal forests",
-        "Temperate forests"
-      ],
-      "age_range": {
-        "wild_avg": 15,
-        "captive_max": 25
-      },
-      "threats": [
-        "Poaching",
-        "Reduction in prey base"
-      ],
       "population_history": [
-        {
-          "period": "Historic (1900)",
-          "estimate": "Abundant"
-        },
-        {
-          "period": "Mid-Century (1950)",
-          "estimate": "Local Extinctions",
-          "note": "Wiped out in Western Europe"
-        },
-        {
-          "period": "Modern (2010)",
-          "estimate": 50000
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 50000,
-          "status": "Least Concern"
-        }
-      ]
+        { "period": "Historic (1900)", "estimate": 100000, "note": "Abundant across Eurasia" },
+        { "period": "Mid-Century (1950)", "estimate": 20000, "note": "Wiped out in Western Europe" },
+        { "period": "Modern (2010)", "estimate": 50000, "note": "Reintroductions in Europe successful" },
+        { "period": "Current (2026)", "estimate": 50000, "note": "Stable across Siberia and Tibet" }
+      ],
+      "geographical_data": {
+        "regions": ["Europe", "Central Asia", "Siberia"],
+        "range_countries": ["Russia", "China", "Norway", "Sweden", "Germany", "Romania", "Tibet"],
+        "habitat_types": ["Boreal forests", "Temperate forests", "Rocky slopes"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": 15, "captive_max": 25 },
+        "primary_threats": ["Poaching", "Reduction in prey", "Habitat loss"]
+      }
     },
     {
       "common_name": "Iberian Lynx",
       "scientific_name": "Lynx pardinus",
       "conservation_status": "Endangered",
-      "wild_population_est": 1100,
-      "geographical_data": {
-        "regions": [
-          "Spain",
-          "Portugal"
-        ],
-        "habitat": "Mediterranean scrubland"
-      },
-      "habitat_types": [
-        "Mediterranean scrubland"
-      ],
-      "age_range": {
-        "wild_avg": 13,
-        "captive_max": 15
-      },
-      "threats": [
-        "Loss of rabbit population",
-        "Road accidents"
-      ],
       "population_history": [
-        {
-          "period": "Historic (1900)",
-          "estimate": 5000
-        },
-        {
-          "period": "Mid-Century (1960)",
-          "estimate": 3000
-        },
-        {
-          "period": "Modern (2002)",
-          "estimate": 94,
-          "note": "Critically low"
-        },
-        {
-          "period": "Current (2026)",
-          "estimate": 1100,
-          "status": "Recovering"
-        }
-      ]
+        { "period": "Historic (1900)", "estimate": 5000, "note": "Native to Spain and Portugal" },
+        { "period": "Mid-Century (1960)", "estimate": 3000, "note": "Impact of rabbit disease" },
+        { "period": "Modern (2002)", "estimate": 94, "note": "World's most endangered cat at the time" },
+        { "period": "Current (2026)", "estimate": 1100, "note": "Major conservation success story" }
+      ],
+      "geographical_data": {
+        "regions": ["Europe"],
+        "range_countries": ["Spain", "Portugal"],
+        "habitat_types": ["Mediterranean scrubland"]
+      },
+      "biological_data": {
+        "age_range": { "wild_avg": 13, "captive_max": 15 },
+        "primary_threats": ["Loss of rabbit prey base", "Road accidents", "Climate change"]
+      }
     }
   ]
 }
