@@ -371,7 +371,7 @@ body.is-zoomed #info-board {
     gap: 5px;
     flex-shrink: 0; /* Prevent chart from shrinking too much */
 }
-}
+
 
 .chart-title {
     font-family: 'Lakki Reddy', cursive;
