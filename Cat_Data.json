@@ -9,6 +9,7 @@
       "common_name": "Tiger",
       "scientific_name": "Panthera tigris",
       "conservation_status": "Endangered",
+      "wild_population_est": null,
       "geographical_data": {
         "regions": [
           "Asia"
@@ -34,12 +35,33 @@
         "Tropical rainforests",
         "Snowy birch forests",
         "Mangrove swamps"
+      ],
+      "age_range": null,
+      "threats": [],
+      "population_history": [
+        {
+          "period": "Historic (1900)",
+          "estimate": 100000
+        },
+        {
+          "period": "Mid-Century (1970)",
+          "estimate": 4000
+        },
+        {
+          "period": "Modern (2010)",
+          "estimate": 3200
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 5578
+        }
       ]
     },
     {
       "common_name": "Lion",
       "scientific_name": "Panthera leo",
       "conservation_status": "Vulnerable",
+      "wild_population_est": null,
       "geographical_data": {
         "regions": [
           "Africa",
@@ -65,12 +87,34 @@
         "Savanna",
         "Grasslands",
         "Open woodlands"
+      ],
+      "age_range": null,
+      "threats": [],
+      "population_history": [
+        {
+          "period": "Historic (1900)",
+          "estimate": 200000
+        },
+        {
+          "period": "Mid-Century (1950)",
+          "estimate": 500000,
+          "note": "Upper historical estimate"
+        },
+        {
+          "period": "Modern (1990)",
+          "estimate": 100000
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 24000
+        }
       ]
     },
     {
       "common_name": "Leopard",
       "scientific_name": "Panthera pardus",
       "conservation_status": "Vulnerable",
+      "wild_population_est": null,
       "geographical_data": {
         "regions": [
           "Africa",
@@ -96,12 +140,35 @@
       "threats": [
         "Habitat loss",
         "Conflict with humans"
+      ],
+      "population_history": [
+        {
+          "period": "Historic (1900)",
+          "estimate": 700000,
+          "note": "Extrapolated historical density"
+        },
+        {
+          "period": "Mid-Century (1970)",
+          "estimate": "Stable",
+          "note": "Before major range loss"
+        },
+        {
+          "period": "Modern (2016)",
+          "estimate": "Declining",
+          "note": "Lost 75% of global range"
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 250000,
+          "note": "Broad tentative estimate"
+        }
       ]
     },
     {
       "common_name": "Jaguar",
       "scientific_name": "Panthera onca",
       "conservation_status": "Near Threatened",
+      "wild_population_est": null,
       "geographical_data": {
         "regions": [
           "Central America",
@@ -127,12 +194,37 @@
         "Tropical rainforests",
         "Wetlands",
         "Arid scrub"
+      ],
+      "age_range": null,
+      "threats": [],
+      "population_history": [
+        {
+          "period": "Historic (1900)",
+          "estimate": 300000,
+          "note": "Estimated original capacity"
+        },
+        {
+          "period": "Mid-Century (1960)",
+          "estimate": "Extirpated in US",
+          "note": "Mass range contraction"
+        },
+        {
+          "period": "Modern (2010)",
+          "estimate": 64000,
+          "note": "Improved surveying"
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 173000,
+          "note": "Current consensus estimate"
+        }
       ]
     },
     {
       "common_name": "Snow Leopard",
       "scientific_name": "Panthera uncia",
       "conservation_status": "Vulnerable",
+      "wild_population_est": null,
       "geographical_data": {
         "regions": [
           "Central Asia"
@@ -153,12 +245,36 @@
       "habitat_types": [
         "High-altitude alpine zones",
         "Rocky mountain ridges"
+      ],
+      "age_range": null,
+      "threats": [],
+      "population_history": [
+        {
+          "period": "Historic (1900)",
+          "estimate": "Stable",
+          "note": "Occupied 2.5m km\u00b2 range"
+        },
+        {
+          "period": "Mid-Century (1970)",
+          "estimate": "Declining",
+          "note": "Increased poaching"
+        },
+        {
+          "period": "Modern (2016)",
+          "estimate": 7500
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 3386,
+          "note": "Conservative census count"
+        }
       ]
     },
     {
       "common_name": "Iriomote Cat",
       "scientific_name": "Prionailurus bengalensis iriomotensis",
       "conservation_status": "Critically Endangered",
+      "wild_population_est": null,
       "geographical_data": {
         "regions": [
           "East Asia"
@@ -173,6 +289,28 @@
       "habitat_types": [
         "Subtropical forests",
         "Mangrove edges"
+      ],
+      "age_range": null,
+      "threats": [],
+      "population_history": [
+        {
+          "period": "Historic (1965)",
+          "estimate": "Discovered",
+          "note": "First scientific description"
+        },
+        {
+          "period": "Mid-Century (1980)",
+          "estimate": 100
+        },
+        {
+          "period": "Modern (1994)",
+          "estimate": 100
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 100,
+          "status": "Critically Endangered"
+        }
       ]
     },
     {
@@ -197,6 +335,25 @@
       "threats": [
         "Deforestation",
         "Illegal wildlife trade"
+      ],
+      "population_history": [
+        {
+          "period": "Historic (1900)",
+          "estimate": "Widespread"
+        },
+        {
+          "period": "Mid-Century (1970)",
+          "estimate": "Declining"
+        },
+        {
+          "period": "Modern (2008)",
+          "estimate": 10000
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 10000,
+          "status": "Vulnerable"
+        }
       ]
     },
     {
@@ -221,6 +378,26 @@
       "threats": [
         "Palm oil plantations",
         "Habitat loss"
+      ],
+      "population_history": [
+        {
+          "period": "Historic (1900)",
+          "estimate": "Widespread"
+        },
+        {
+          "period": "Mid-Century (1970)",
+          "estimate": "Declining"
+        },
+        {
+          "period": "Modern (2006)",
+          "estimate": "Split Species",
+          "note": "Recognized as distinct from N. nebulosa"
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 4500,
+          "note": "Estimated <10,000"
+        }
       ]
     },
     {
@@ -247,6 +424,25 @@
       "threats": [
         "Low genetic diversity",
         "Human-wildlife conflict"
+      ],
+      "population_history": [
+        {
+          "period": "Historic (1900)",
+          "estimate": 100000
+        },
+        {
+          "period": "Mid-Century (1975)",
+          "estimate": 15000
+        },
+        {
+          "period": "Modern (2016)",
+          "estimate": 7100
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 7100,
+          "status": "Declining"
+        }
       ]
     },
     {
@@ -273,6 +469,27 @@
       "threats": [
         "Habitat fragmentation",
         "Road mortality"
+      ],
+      "population_history": [
+        {
+          "period": "Historic (1900)",
+          "estimate": "Range-wide"
+        },
+        {
+          "period": "Mid-Century (1960)",
+          "estimate": "Heavily Hunted",
+          "note": "Bounty programs active"
+        },
+        {
+          "period": "Modern (1990)",
+          "estimate": "Recovering",
+          "note": "Protections in Western US"
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 50000,
+          "note": "Stable in North America"
+        }
       ]
     },
     {
@@ -299,6 +516,26 @@
       "threats": [
         "Poaching",
         "Reduction in prey base"
+      ],
+      "population_history": [
+        {
+          "period": "Historic (1900)",
+          "estimate": "Abundant"
+        },
+        {
+          "period": "Mid-Century (1950)",
+          "estimate": "Local Extinctions",
+          "note": "Wiped out in Western Europe"
+        },
+        {
+          "period": "Modern (2010)",
+          "estimate": 50000
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 50000,
+          "status": "Least Concern"
+        }
       ]
     },
     {
@@ -323,6 +560,26 @@
       "threats": [
         "Loss of rabbit population",
         "Road accidents"
+      ],
+      "population_history": [
+        {
+          "period": "Historic (1900)",
+          "estimate": 5000
+        },
+        {
+          "period": "Mid-Century (1960)",
+          "estimate": 3000
+        },
+        {
+          "period": "Modern (2002)",
+          "estimate": 94,
+          "note": "Critically low"
+        },
+        {
+          "period": "Current (2026)",
+          "estimate": 1100,
+          "status": "Recovering"
+        }
       ]
     }
   ]

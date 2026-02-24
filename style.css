@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: sans-serif;
     background-color: #9db0c5;
@@ -287,19 +291,20 @@ body.is-zoomed #info-board {
 /* Container for the main content card to ensure it stays centered and sized relative to view */
 #info-content-container {
     position: relative;
-    width: 90%;
-    height: 70%; 
-    margin-top: 10%; /* push down for title */
+    width: 95%; /* Increased width */
+    height: 80%; /* Increased height */
+    margin-top: 8%; /* Reduced top margin to give more space */
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align smoothly at top */
     gap: 2%;
+    padding-bottom: 2%; /* Add bottom padding */
 }
 
 #info-photo-container {
     width: 40%;
-    height: 80%;
+    height: 90%; /* Match sibling height more closely */
     border: 1px solid black;
     border-radius: 20px;
     overflow: hidden;
@@ -315,25 +320,27 @@ body.is-zoomed #info-board {
 
 #info-body {
     width: 55%;
-    height: 80%;
+    height: 90%; /* consistent height with photo */
     background: rgba(217, 217, 217, 0.9); /* More opacity for readability */
     border: 1px solid black;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 2vw;
+    justify-content: flex-start; /* Start from top to allow scrolling */
+    padding: 1.5rem; /* Standard formatting */
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    overflow-y: auto; /* Enable scrolling for extra content */
 }
 
 /* Text styles inside info body */
 #info-body p, #info-geo {
     font-family: 'Lakki Reddy', cursive; 
-    font-size: min(2.5vw, 2.5vh); /* Responsive font */
+    font-size: min(2vw, 2.2vh); /* Slightly reduced for better fit but still legible */
     color: #333;
-    padding: 0.5em 0;
+    padding: 0.3em 0; /* Reduced padding */
     margin: 0; 
+    line-height: 1.3;
 }
 
 #info-common { display: none; } 
@@ -341,15 +348,75 @@ body.is-zoomed #info-board {
 #info-scientific, #info-status, #info-habitats {
     /* margin-top: 10px; */
 }
-    min-height: 100px;
+
+/* Chart Styles */
+.chart-title {
+    margin: 0;
+    font-size: 1.1em;
+    font-family: 'Lakki Reddy', cursive;
+    color: #444;
+    text-align: center;
+    padding-bottom: 5px;
 }
 
-#info-display h2 {
-    margin-top: 0;
-    color: #2c3e50;
+#info-chart-container {
+    width: 100%;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-shrink: 0; /* Prevent chart from shrinking too much */
+}
 }
 
-#info-display p {
-    line-height: 1.6;
-    margin-bottom: 10px;
+.chart-title {
+    font-family: 'Lakki Reddy', cursive;
+    font-size: min(2vw, 2vh);
+    margin: 0 0 5px 0;
+    text-align: center;
+    color: #444;
+}
+
+.chart-row {
+    display: flex;
+    align-items: center;
+    font-family: sans-serif; /* Readable font for data */
+    font-size: min(1.5vw, 1.5vh);
+    gap: 5px;
+}
+
+.chart-label {
+    width: 25%;
+    text-align: right;
+    font-weight: bold;
+    color: #222; /* Darker for better contrast */
+    font-size: 1.1em; /* Increased size */
+}
+
+.chart-bar-bg {
+    flex-grow: 1;
+    height: 18px; /* Taller bars */
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0 10px; /* Spacing */
+    border: 1px solid #999; /* clarity */
+}
+
+.chart-bar-fill {
+    height: 100%;
+    /* background is set inline via JS now */
+    border-radius: 4px;
+    transition: width 0.5s ease-out;
+}
+
+.chart-value {
+    width: 25%;
+    font-size: 1.1em; /* Increased size */
+    color: #000;
+    font-weight: bold;
 }

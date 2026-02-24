@@ -96,8 +96,71 @@ function updateInfoBoard(cat) {
     select('#info-title').html(cat.common_name);
     select('#info-scientific').html(`Scientific Name: ${cat.scientific_name}`);
     select('#info-status').html(`Status: ${cat.conservation_status}`);
-    select('#info-habitats').html(`Habitats: ${cat.habitat_types.join(', ')}`);
     
+    // Handle Habitats (New JSON structure vs Old)
+    let habitats = [];
+    if (cat.geographical_data && cat.geographical_data.habitat_types) {
+        habitats = cat.geographical_data.habitat_types;
+    } else if (cat.habitat_types) {
+        habitats = cat.habitat_types;
+    }
+    
+    if (habitats.length > 0) {
+        select('#info-habitats').html(`Habitats: ${habitats.join(', ')}`);
+        select('#info-habitats').style('display', 'block');
+    } else {
+        select('#info-habitats').style('display', 'none');
+    }
+    
+    // Additional Data
+    const pop = select('#info-wild-pop');
+    let wildPopVal = null;
+    
+    if (cat.wild_population_est) {
+        wildPopVal = cat.wild_population_est;
+    } else if (cat.population_history && cat.population_history.length > 0) {
+        // Get the latest estimate from history
+        const lastEntry = cat.population_history[cat.population_history.length - 1];
+        wildPopVal = lastEntry.estimate;
+    }
+    
+    if (wildPopVal) {
+        pop.html(`Wild Pop: ${typeof wildPopVal === 'number' ? wildPopVal.toLocaleString() : wildPopVal}`);
+        pop.style('display', 'block');
+    } else {
+        pop.style('display', 'none');
+    }
+
+    const age = select('#info-age');
+    let ageData = null;
+    if (cat.biological_data && cat.biological_data.age_range) {
+        ageData = cat.biological_data.age_range;
+    } else if (cat.age_range) {
+        ageData = cat.age_range;
+    }
+
+    if (ageData && ageData.wild_avg) {
+        age.html(`Lifespan: ${ageData.wild_avg} years`);
+        age.style('display', 'block');
+    } else {
+         age.style('display', 'none');
+    }
+
+    const threat = select('#info-threats');
+    let threatData = [];
+    if (cat.biological_data && cat.biological_data.primary_threats) {
+        threatData = cat.biological_data.primary_threats;
+    } else if (cat.threats) {
+        threatData = cat.threats;
+    }
+
+    if (threatData && threatData.length > 0) {
+        threat.html(`Threats: ${threatData.join(', ')}`);
+        threat.style('display', 'block');
+    } else {
+        threat.style('display', 'none');
+    }
+
     // Update Image
     const imgPath = getCatImage(cat.common_name);
     if (imgPath) {
@@ -115,6 +178,107 @@ function updateInfoBoard(cat) {
         }
     }
     select('#info-geo').html(geoText);
+    
+    // Render Chart
+    renderChart(cat);
+}
+
+function renderChart(cat) {
+    const container = select('#info-chart-container');
+    if (!container) return; // Guard clause
+    
+    container.html(''); // Clear previous chart
+
+    if (!cat.population_history || cat.population_history.length === 0) {
+        container.style('display', 'none');
+        return;
+    }
+
+    container.style('display', 'flex'); // Show container
+
+    // Title
+    const title = createElement('h4', 'Population History');
+    title.addClass('chart-title');
+    title.parent(container);
+
+    // Find max value to scale bars
+    let maxVal = 0;
+    cat.population_history.forEach(d => {
+        let val = (typeof d.estimate === 'number') ? d.estimate : 0;
+        if (val > maxVal) maxVal = val;
+    });
+    
+    if (maxVal === 0) maxVal = 100; // Prevent division by zero
+
+    cat.population_history.forEach(d => {
+        const row = createDiv('');
+        row.addClass('chart-row');
+        row.parent(container);
+
+        // Period Label (Year or Era)
+        let labelText = d.period;
+        // Try to extract year: "Historic (1900)" -> "1900"
+        let yearMatch = d.period.match(/\d{4}/);
+        if (yearMatch) {
+             labelText = yearMatch[0];
+        } else {
+             // If no year, take first word or short form
+             labelText = d.period.split(' ')[0];
+        }
+        
+        const label = createSpan(labelText);
+        label.addClass('chart-label');
+        label.parent(row);
+
+        // Background for bar area
+        const barBg = createDiv('');
+        barBg.addClass('chart-bar-bg');
+        barBg.parent(row);
+
+        // Calculate width
+        let val = (typeof d.estimate === 'number') ? d.estimate : 0;
+        let percentage = (val / maxVal) * 100;
+        
+        // Handle non-numeric or small values
+        if (typeof d.estimate !== 'number') {
+            percentage = 10; // Fixed width for non-numeric states
+        } else if (percentage < 1) {
+            percentage = 1; // Minimum visibility
+        }
+
+        const barFill = createDiv('');
+        barFill.addClass('chart-bar-fill');
+        barFill.style('width', percentage + '%');
+        
+        // Color based on percentage of max (high = green, low = red, mid = yellow/orange)
+        // If > 75% -> Green
+        // If 40-75% -> Yellow/Orange
+        // If < 40% -> Red
+        
+        if (percentage > 75) {
+             barFill.style('background', 'linear-gradient(90deg, #56ab2f, #a8e063)'); // Green
+        } else if (percentage > 40) {
+             barFill.style('background', 'linear-gradient(90deg, #fceabb, #f8b500)'); // Yellow-Orange
+        } else {
+             barFill.style('background', 'linear-gradient(90deg, #ff9966, #ff5e62)'); // Red
+        }
+
+        // Special override for status indicators
+        if (d.status && d.status.includes('Declining')) {
+             // Maybe force red/orange regardless of number?
+             // barFill.style('background', 'linear-gradient(90deg, #ff9966, #ff5e62)');
+        } else if (d.status === 'Recovering') {
+             // barFill.style('background', 'linear-gradient(90deg, #56ab2f, #a8e063)');
+        }
+        
+        barFill.parent(barBg);
+
+        // Value Label
+        let valText = (typeof d.estimate === 'number') ? d.estimate.toLocaleString() : d.estimate;
+        const valSpan = createSpan(valText);
+        valSpan.addClass('chart-value');
+        valSpan.parent(row);
+    });
 }
 
 function findCatData(speciesName) {
