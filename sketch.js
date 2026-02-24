@@ -105,8 +105,14 @@ function updateInfoBoard(cat) {
     }
 
     let geoText = 'Locations: ';
-    if (cat.geographical_data && cat.geographical_data.range_countries) {
-        geoText += cat.geographical_data.range_countries.slice(0, 5).join(', ') + (cat.geographical_data.range_countries.length > 5 ? '...' : '');
+    if (cat.geographical_data) {
+        if (cat.geographical_data.range_countries && cat.geographical_data.range_countries.length > 0) {
+             geoText += cat.geographical_data.range_countries.slice(0, 5).join(', ') + (cat.geographical_data.range_countries.length > 5 ? '...' : '');
+        } else if (cat.geographical_data.regions && cat.geographical_data.regions.length > 0) {
+             geoText += cat.geographical_data.regions.join(', ');
+        } else {
+            geoText += "Unknown";
+        }
     }
     select('#info-geo').html(geoText);
 }
