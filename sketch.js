@@ -95,7 +95,29 @@ function setup() {
 function updateInfoBoard(cat) {
     select('#info-title').html(cat.common_name);
     select('#info-scientific').html(`Scientific Name: ${cat.scientific_name}`);
-    select('#info-status').html(`Status: ${cat.conservation_status}`);
+    
+    // Update status with highlight - only color the status value, not the label
+    const statusEl = select('#info-status');
+    statusEl.html(`Status: <span id="status-value">${cat.conservation_status}</span>`);
+    
+    // Remove old classes (p5 removeClass only takes one class at a time)
+    statusEl.removeClass('status-green');
+    statusEl.removeClass('status-yellow');
+    statusEl.removeClass('status-orange');
+    statusEl.removeClass('status-red');
+    
+    let status = cat.conservation_status.toLowerCase();
+    if (status.includes('least concern')) {
+        statusEl.addClass('status-green');
+    } else if (status.includes('vulnerable')) {
+        statusEl.addClass('status-yellow');
+    } else if (status.includes('critically endangered')) {
+        statusEl.addClass('status-red');
+    } else if (status.includes('endangered')) {
+        statusEl.addClass('status-orange');
+    } else if (status.includes('near threatened')) {
+        statusEl.addClass('status-yellow'); 
+    }
     
     // Handle Habitats (New JSON structure vs Old)
     let habitats = [];
@@ -203,14 +225,28 @@ function renderChart(cat) {
 
     // Find max value to scale bars
     let maxVal = 0;
-    cat.population_history.forEach(d => {
-        let val = (typeof d.estimate === 'number') ? d.estimate : 0;
+    
+    // Filter out non-numeric estimates for cleaner chart
+    const numericData = cat.population_history.filter(d => typeof d.estimate === 'number');
+
+    if (numericData.length === 0) {
+         container.style('display', 'none');
+         return;
+    }
+
+    numericData.forEach(d => {
+        let val = d.estimate;
         if (val > maxVal) maxVal = val;
     });
     
+    // Special handling for Iriomote Cat to ensure bars are small and red
+    if (cat.common_name === 'Iriomote Cat') {
+        maxVal = 1000; // Creating a larger relative scale makes bars appear small (100/1000 = 10%)
+    }
+
     if (maxVal === 0) maxVal = 100; // Prevent division by zero
 
-    cat.population_history.forEach(d => {
+    numericData.forEach(d => {
         const row = createDiv('');
         row.addClass('chart-row');
         row.parent(container);
@@ -236,13 +272,10 @@ function renderChart(cat) {
         barBg.parent(row);
 
         // Calculate width
-        let val = (typeof d.estimate === 'number') ? d.estimate : 0;
+        let val = d.estimate;
         let percentage = (val / maxVal) * 100;
         
-        // Handle non-numeric or small values
-        if (typeof d.estimate !== 'number') {
-            percentage = 10; // Fixed width for non-numeric states
-        } else if (percentage < 1) {
+        if (percentage < 1) {
             percentage = 1; // Minimum visibility
         }
 
@@ -274,7 +307,7 @@ function renderChart(cat) {
         barFill.parent(barBg);
 
         // Value Label
-        let valText = (typeof d.estimate === 'number') ? d.estimate.toLocaleString() : d.estimate;
+        let valText = d.estimate.toLocaleString();
         const valSpan = createSpan(valText);
         valSpan.addClass('chart-value');
         valSpan.parent(row);

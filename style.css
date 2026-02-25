@@ -74,12 +74,13 @@ body {
     margin: 0;
     z-index: 20;
     pointer-events: none; 
-    transition: opacity 0.5s;
+    transition: opacity 1s ease 1.2s; /* Wait 1.5s then fade in over 1s */
 }
 
 /* Hide main title when zoomed */
 body.is-zoomed #main-title {
     opacity: 0;
+    transition: opacity 0.3s ease; /* Fade out quickly when zooming in */
 }
 
 @keyframes float {
@@ -109,19 +110,19 @@ body.is-zoomed #main-title {
 }
 
 /* Status Rings */
-.status-green {
+.cat-sticker.status-green {
     box-shadow: 0 0 0 4px #4CAF50, 0 0 10px rgba(76, 175, 80, 0.5); /* Material Green */
 }
 
-.status-yellow {
+.cat-sticker.status-yellow {
     box-shadow: 0 0 0 4px #FFC107, 0 0 10px rgba(255, 193, 7, 0.5); /* Material Amber */
 }
 
-.status-orange {
+.cat-sticker.status-orange {
     box-shadow: 0 0 0 4px #FF9800, 0 0 10px rgba(255, 152, 0, 0.5); /* Material Orange */
 }
 
-.status-red {
+.cat-sticker.status-red {
     box-shadow: 0 0 0 4px #F44336, 0 0 10px rgba(244, 67, 54, 0.5); /* Material Red */
 }
 
@@ -305,7 +306,7 @@ body.is-zoomed #info-board {
 #info-photo-container {
     width: 40%;
     height: 90%; /* Match sibling height more closely */
-    border: 1px solid black;
+    border: none;
     border-radius: 20px;
     overflow: hidden;
     background-color: #ddd;
@@ -322,7 +323,7 @@ body.is-zoomed #info-board {
     width: 55%;
     height: 90%; /* consistent height with photo */
     background: rgba(217, 217, 217, 0.9); /* More opacity for readability */
-    border: 1px solid black;
+    border: none;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -345,8 +346,32 @@ body.is-zoomed #info-board {
 
 #info-common { display: none; } 
 
-#info-scientific, #info-status, #info-habitats {
+#info-scientific, #info-habitats {
     /* margin-top: 10px; */
+}
+
+#info-status {
+    margin: 0;
+}
+
+#info-status.status-green #status-value {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+#info-status.status-yellow #status-value {
+    color: #F59E0B;
+    font-weight: bold;
+}
+
+#info-status.status-orange #status-value {
+    color: #FF9800;
+    font-weight: bold;
+}
+
+#info-status.status-red #status-value {
+    color: #F44336;
+    font-weight: bold;
 }
 
 /* Chart Styles */
