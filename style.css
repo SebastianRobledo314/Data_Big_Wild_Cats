@@ -258,17 +258,25 @@ body.is-zoomed #info-board {
     position: absolute;
     top: 5%;
     right: 5%;
-    width: 8%; /* Relative size */
+    width: 5%;
     aspect-ratio: 1;
-    background: none;
+    background: rgba(150, 150, 150, 0.6);
     border: none;
+    border-radius: 50%;
     cursor: pointer;
     z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 #close-btn img {
-    width: 100%;
-    height: 100%;
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+    display: block;
 }
 
 #info-title {
