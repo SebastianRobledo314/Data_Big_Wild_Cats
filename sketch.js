@@ -1,5 +1,20 @@
 let catData;
 let infoBoard;
+let currentAudio = null;
+
+// Map species to their audio files
+const audioMap = {
+  "Tiger": "assets/Audio/Tiger .mp3",
+  "Lion": "assets/Audio/Lion - Sound Effect  ProSounds.mp3",
+  "Leopard": "assets/Audio/Leopard's Mighty Roar.mp3",
+  "Jaguar": "assets/Audio/JAGUAR.mp3",
+  "Snow Leopard": "assets/Audio/Snow leopard sounds.mp3",
+  "Clouded Leopard": "assets/Audio/Clouded leopard sounds.mp3",
+  "Cheetah": "assets/Audio/Cheetah Meows.mp3",
+  "Cougar (Puma/Mountain Lion)": "assets/Audio/Cougar Talk....mp3",
+  "Eurasian Lynx": "assets/Audio/Lynx growl - Sound Effect (HD).mp3",
+  "Iberian Lynx": "assets/Audio/Lynx growl - Sound Effect (HD).mp3"
+};
 
 function preload() {
   // Load the JSON data
@@ -82,13 +97,39 @@ function setup() {
     });
   });
 
+  // Audio play button
+  const audioPlayBtn = select('#audio-play-btn');
+  audioPlayBtn.mousePressed(() => {
+    if (!currentAudio) return;
+    if (currentAudio.paused) {
+      currentAudio.play();
+      select('#audio-icon').html('⏸️');
+      select('#audio-label').html('Pause');
+    } else {
+      currentAudio.pause();
+      select('#audio-icon').html('🔊');
+      select('#audio-label').html('Listen');
+    }
+  });
+
+  // Volume slider
+  const volumeSlider = select('#audio-volume');
+  volumeSlider.input(() => {
+    if (currentAudio) {
+      currentAudio.volume = volumeSlider.value() / 100;
+    }
+  });
+
   // Close functionality
   closeBtn.mousePressed(() => {
+    // Stop any playing audio
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio = null;
+    }
     body.removeClass('is-zoomed');
     zoomLayer.style('transform', 'scale(1)');
-    // Resetting transform origin isn't strictly necessary but good practice if we want to default to center or top-left
-    // zoomLayer.style('transform-origin', '0 0'); // Wait until transition ends? 
-    // Just leaving current origin is fine for zooming out to the same spot.
   });
 }
 
@@ -200,7 +241,31 @@ function updateInfoBoard(cat) {
         }
     }
     select('#info-geo').html(geoText);
-    
+
+    // Audio controls
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio = null;
+    }
+
+    const audioControls = select('#info-audio-controls');
+    const audioFile = audioMap[cat.common_name];
+    if (audioFile) {
+      currentAudio = new Audio(audioFile);
+      const vol = select('#audio-volume');
+      currentAudio.volume = vol.value() / 100;
+      currentAudio.addEventListener('ended', () => {
+        select('#audio-icon').html('🔊');
+        select('#audio-label').html('Listen');
+      });
+      select('#audio-icon').html('🔊');
+      select('#audio-label').html('Listen');
+      audioControls.style('display', 'flex');
+    } else {
+      audioControls.style('display', 'none');
+    }
+
     // Render Chart
     renderChart(cat);
 }
