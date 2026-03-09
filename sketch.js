@@ -1,5 +1,4 @@
 let catData;
-let infoBoard;
 let currentAudio = null;
 
 // Map species to their audio files
@@ -24,10 +23,8 @@ function preload() {
 function setup() {
   noCanvas(); // We are using DOM elements
   
-  infoBoard = select('#info-board');
   const zoomLayer = select('#zoom-layer');
   const closeBtn = select('#close-btn');
-  const mainTitle = select('#main-title');
   const body = select('body');
   
   // Select all cat stickers
@@ -59,15 +56,7 @@ function setup() {
         if (cat) {
             updateInfoBoard(cat); // Populate data
             
-            // Improved Zoom Calculation
-            // We use the original CSS left/top values which are relative to the container (1728x1117)
-            // This is safer than DOM offset measures if the element is already transformed
-            
-            // Parse '100px' to 100
-            let left = parseFloat(sticker.style('left')); 
-            let top = parseFloat(sticker.style('top'));
-            
-            // If not found in inline style, compute it
+            // Zoom to the clicked sticker
             let comp = window.getComputedStyle(sticker.elt);
             let stickerLeft = parseFloat(comp.left);
             let stickerTop = parseFloat(comp.top);
@@ -262,8 +251,14 @@ function updateInfoBoard(cat) {
       select('#audio-icon').html('🔊');
       select('#audio-label').html('Listen');
       audioControls.style('display', 'flex');
+      select('#info-no-audio').style('display', 'none');
     } else {
       audioControls.style('display', 'none');
+      if (cat.common_name === 'Iriomote Cat') {
+        select('#info-no-audio').style('display', 'block');
+      } else {
+        select('#info-no-audio').style('display', 'none');
+      }
     }
 
     // Render Chart
@@ -361,14 +356,6 @@ function renderChart(cat) {
              barFill.style('background', 'linear-gradient(90deg, #ff9966, #ff5e62)'); // Red
         }
 
-        // Special override for status indicators
-        if (d.status && d.status.includes('Declining')) {
-             // Maybe force red/orange regardless of number?
-             // barFill.style('background', 'linear-gradient(90deg, #ff9966, #ff5e62)');
-        } else if (d.status === 'Recovering') {
-             // barFill.style('background', 'linear-gradient(90deg, #56ab2f, #a8e063)');
-        }
-        
         barFill.parent(barBg);
 
         // Value Label
@@ -387,7 +374,6 @@ function findCatData(speciesName) {
     
     // Normalize input
     const cleanName = speciesName ? speciesName.trim() : "";
-    console.log("Searching for cat:", cleanName);
 
     // Explicit check for Jaguar to prevent any partial match issues
     if (cleanName.toLowerCase() === "jaguar") {
@@ -414,17 +400,9 @@ function findCatData(speciesName) {
     return cat;
 }
 
-function displayInfo(cat, displayContainer) {
-   // Legacy function, replaced by updateInfoBoard logic directly
-}
-
 function getCatImage(commonName) {
     if (!commonName) return "assets/ui/snow_leopard_photo.png";
     const name = commonName.trim();
-    console.log("Getting image for:", name);
-
-    // Ensure path uses %20 for spaces
-    // const wildCatPath = "assets/wild%20cat/"; 
     const wildCatPath = "assets/wild cat/";
     
     // Map common names to file names explicitly
